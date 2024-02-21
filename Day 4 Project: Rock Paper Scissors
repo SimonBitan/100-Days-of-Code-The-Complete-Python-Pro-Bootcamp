@@ -1,0 +1,75 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Write your code below this line 👇
+
+import random
+
+print("Welcome to rock paper scissors!")
+
+selection = input("Which do you choose? Type '0' for rock, '1' for paper, or '2' for scissors (no quotes).\n")
+
+if selection == 0:
+  print(f"Your selection:\n{rock}")
+elif selection == 1:
+  print(f"Your selection:\n{paper}")
+else:
+  print(f"Your selection:\n{scissors}")
+
+opponent = random.randint(0,2)
+
+# opponent same rules, 0 is rock, 1 paper, 2 scissors
+
+if opponent == 0:
+  print(f"Computer's selection:\n{rock}")
+elif opponent == 1:
+  print(f"Computer's selection:\n{paper}")
+else:
+  print(f"Computer's selection:\n{scissors}")
+
+if selection == 0:
+  if opponent == 0:
+    print("It's a draw!")
+  elif opponent == 1:
+    print("The computer wins!")
+  else:
+    print("You win!")
+elif selection == 1:
+  if opponent == 1:
+    print("It's a draw!")
+  elif opponent == 2:
+    print("The computer wins!")
+  else:
+    print("You win!")
+else:
+  if opponent == 2:
+    print("It's a draw!")
+  elif opponent == 0:
+    print("The computer wins!")
+  else:
+    print("You win!")
+
