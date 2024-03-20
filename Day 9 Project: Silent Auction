@@ -1,0 +1,30 @@
+from replit import clear
+#HINT: You can call clear() to clear the output in the console.
+import art
+
+bidders = {}
+
+def add_bidders(name, bid):
+  bidders[name] = bid
+
+keep_going = True
+
+while keep_going:
+  print(art.logo)
+  print("Welcome to the secret auction program.")
+  name = input("What is your name?: ")
+  
+  bid = int(input("What is your bid?: $"))
+
+  add_bidders(name, bid)
+
+  
+  
+  other_bidders = input('Are there any other bidders? Type "yes" or "no".\n ').lower()
+  if other_bidders == "no":
+    keep_going = False
+    highest_bidder = max(bidders, key=bidders.get)
+    print(f"{highest_bidder} wins!")
+  else:
+    clear()
+    continue
