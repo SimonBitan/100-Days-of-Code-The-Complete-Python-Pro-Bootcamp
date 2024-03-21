@@ -1,0 +1,75 @@
+# Calculator
+from art import logo
+
+# Add
+def add(a, b):
+  return a + b
+
+# Subtract
+def subtract(a, b):
+  return a - b
+
+# Multiply
+def multiply(a, b):
+  return a * b
+
+# Divide
+def divide(a, b):
+  return a / b
+
+operations = {
+  "+": add,
+  "-": subtract,
+  "*": multiply,
+  "/": divide 
+}
+
+def calculator():
+  print(logo)
+  
+  num1 = float(input("What is the first number?: "))
+  
+  for operator in operations:
+    print(operator)
+  
+  operation_symbol = input("Pick an operation from those printed above: ")
+  
+  num2 = float(input("What is the second number?: "))
+  
+  calculation_symbol = operations[operation_symbol]
+  
+  answer = calculation_symbol(num1, num2)
+  
+  print(f"{num1} {operation_symbol} {num2} = {answer}")
+  
+  keep_going_choice = input(f'Type "y" to keep going with {answer}, or type "n" to exit: ')
+  
+  if keep_going_choice == "n":
+    calculator()
+  
+  keep_going = True 
+  
+  while keep_going:
+  
+    num1 = answer
+    
+    for operator in operations:
+      print(operator)
+    
+    operation_symbol = input("Pick an operation from those printed above: ")
+    
+    next_num = float(input("What's the next number?: "))
+  
+    calculation_symbol = operations[operation_symbol]
+  
+    answer = calculation_symbol(num1, next_num)
+  
+    print(f"{num1} {operation_symbol} {next_num} = {answer}")
+  
+    keep_going_choice = input(f'Type "y" to keep going with {answer}, or type "n" to exit: ')
+  
+    if keep_going_choice == "n":
+      keep_going = False
+      calculator()
+
+calculator()
