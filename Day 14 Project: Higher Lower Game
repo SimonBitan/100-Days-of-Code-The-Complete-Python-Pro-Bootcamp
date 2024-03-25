@@ -1,0 +1,81 @@
+import art
+from clear import clear
+import random
+from game_data import data
+
+# Function for person selection
+def person_selector():
+  person = random.choice(data)
+  return person
+
+# Function to determine who has more followers
+def more_followers(a, b):
+  if a['follower_count'] > b['follower_count']:
+    return "a"
+  elif b['follower_count'] > a['follower_count']:
+    return "b"
+  else:
+    return "both"
+
+# Function to rotate A and B in the loop
+def new_person_selector(a, b):
+  global person_a, person_b
+  a = person_a
+  b = person_b
+  person_a = person_b
+  person_b = person_selector()
+
+# Function to clear the screen and print the logo.
+def clear_screen():
+  clear()
+  print(art.logo)
+
+# Print "Higher Or Lower" and welcome the user
+print(art.logo)
+print("Welcome to Higher Or Lower!")
+
+# Select initial two options
+person_a = person_selector()
+person_b = person_selector()
+
+
+
+# Game loop
+correct = True
+score = 0
+
+while correct:
+  # Ensure person_a and person_b are not the same
+  while person_a == person_b:
+    person_b = person_selector()
+  
+  # Determine which has more followers
+  more_followers(person_a, person_b)
+  
+  print(f"Compare A: {person_a['name']}, a(n) {person_a['description']}, from {person_a['country']}.\n")
+
+  print(art.vs)
+
+  print(f"Against B: {person_b['name']}, a(n) {person_b['description']}, from {person_b['country']}.")
+
+  selection = input("Who has more followers? Type 'A' or 'B': ").lower()
+
+  if more_followers(person_a, person_b) == "a" and selection == "a":
+    score += 1
+    clear_screen()
+    print(f"You're right! Current score: {score}.")
+    new_person_selector(person_a, person_b)
+  elif more_followers(person_a, person_b) == "b" and selection =="b":
+    score += 1
+    clear_screen()
+    print(f"You're right! Current score: {score}.")
+    new_person_selector(person_a, person_b)
+    
+  elif more_followers(person_a, person_b) == "both":
+    print(f"They have the same amount of followers! Current score: {score}.")
+  else:
+    clear_screen()
+    print(f"Sorry, that's wrong. Final score: {score}.")
+    correct = False
+
+  
