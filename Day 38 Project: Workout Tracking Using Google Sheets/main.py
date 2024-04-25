@@ -51,7 +51,7 @@ try:
         }
 
         sheety_header = {
-            "Authorization": "Bearer PheDA7LCraHi$Pijaxem"
+            "Authorization": TOKEN
         }
 
         # Post data to the sheet.
